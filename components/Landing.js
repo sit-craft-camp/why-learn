@@ -1,6 +1,5 @@
 import React from 'react'
-import {keyframes} from 'emotion'
-import styled from 'react-emotion'
+import styled, {keyframes} from 'styled-components'
 import axios from 'axios'
 import Typist from 'react-typist'
 

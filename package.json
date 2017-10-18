@@ -7,28 +7,23 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.16.2",
-    "babel-plugin-emotion": "^8.0.6",
-    "emotion": "^8.0.6",
-    "emotion-server": "^8.0.6",
+    "babel-plugin-styled-components": "^1.2.1",
     "jump.js": "^1.0.2",
     "next": "^4.0.5",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-emotion": "^8.0.6",
     "react-ink": "^6.2.0",
     "react-particles-js": "^2.0.0",
-    "react-redux": "^5.0.6",
     "react-transition-group": "^2.2.1",
     "react-typist": "^2.0.1",
     "reactstrap": "^4.8.0",
-    "recompose": "^0.26.0",
-    "redux": "^3.7.2",
-    "redux-saga": "^0.16.0"
+    "styled-components": "^2.2.1"
   },
   "scripts": {
     "dev": "next"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.1"
+    "babel-eslint": "^8.0.1",
+    "babel-plugin-transform-runtime": "^6.23.0"
   }
 }
