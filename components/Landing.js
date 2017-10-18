@@ -13,40 +13,6 @@ export const Page = styled.div`
   min-height: 100vh;
 `
 
-const blinking = keyframes`
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-`
-
-export const Tagline = styled.h1`
-  display: flex;
-  color: #555;
-  font-family: Roboto;
-  font-weight: 300;
-  font-size: 2.4em;
-
-  > .Typist > .Cursor {
-    display: inline-block;
-  }
-
-  > .Typist > .Cursor.Cursor--blinking {
-    opacity: 1;
-    animation: ${blinking} 1s linear infinite;
-  }
-`
-
-export const Bold = styled.strong`
-  margin-left: 0.3em;
-  font-weight: 400;
-`
-
 export const getChar = index =>
   `/static/${subjects[index] ? subjects[index].image : subjects[0]}.png`
 
@@ -75,15 +41,3 @@ export const subjects = [
     image: 'wizard'
   }
 ]
-
-export const Title = ({index = 0}) => {
-  const name = subjects[index] ? subjects[index].name : ''
-  const len = name.length + 1
-
-  return (
-    <Typist key={name}>
-      <Bold>{name}?</Bold>
-      <Typist.Backspace count={len} delay={2000} />
-    </Typist>
-  )
-}
