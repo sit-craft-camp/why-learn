@@ -3,16 +3,6 @@ import styled, {keyframes} from 'styled-components'
 import axios from 'axios'
 import Typist from 'react-typist'
 
-export const Page = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  background: #ffffff;
-  min-height: 100vh;
-`
-
 export const getChar = index =>
   `/static/${subjects[index] ? subjects[index].image : subjects[0]}.png`
 
