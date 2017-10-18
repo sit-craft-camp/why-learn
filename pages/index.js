@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import styled, {keyframes} from 'styled-components'
 import axios from 'axios'
-import Typist from 'react-typist'
 import {Container, Row, Col} from 'reactstrap'
 
 import App from '../components/App'
+import Slogan from '../components/Slogan'
 
 // prettier-ignore
-import {Page, Tagline, Title, subjects} from '../components/Landing'
+import {Page} from '../components/Landing'
 
 const Logo = styled.h1`
   font-family: Roboto;
@@ -19,10 +19,7 @@ const Logo = styled.h1`
 const Fold = ({index}) => (
   <Page>
     <Logo>WHY LEARN</Logo>
-    <Tagline>
-      Why do we learn
-      <Title />
-    </Tagline>
+    <Slogan />
     <div />
   </Page>
 )
