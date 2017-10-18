@@ -1,25 +1,16 @@
 import React from 'react'
 import Document, {Head, Main, NextScript} from 'next/document'
-import {extractCritical} from 'emotion-server'
-import {flush} from 'emotion'
+import {ServerStyleSheet} from 'styled-components'
 
 const dev = process.env.NODE_ENV !== 'production'
 
 export default class BaseDocument extends Document {
   // This will extract the critical stylesheets and render the page.
-  static getInitialProps({renderPage}) {
-    // Flush the styles in development
-    if (dev) {
-      flush()
-    }
-
-    const page = renderPage()
-    const styles = extractCritical(page.html)
-
-    return {
-      ...page,
-      ...styles
-    }
+  static getInitialProps ({ renderPage }) {
+    const sheet = new ServerStyleSheet()
+    const page = renderPage(App => props => sheet.collectStyles(<App {...props} />))
+    const styleTags = sheet.getStyleElement()
+    return { ...page, styleTags }
   }
 
   constructor(props) {
@@ -34,9 +25,9 @@ export default class BaseDocument extends Document {
   render = () => (
     <html lang="en">
       <Head>
-        <title>Skootar Clone</title>
+        <title>Next.js</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <style dangerouslySetInnerHTML={{__html: this.props.css}} />
+        {this.props.styleTags}
         <link
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"

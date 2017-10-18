@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import styled from 'react-emotion'
+import styled from 'styled-components'
 
 const Page = styled.div`
   display: flex;

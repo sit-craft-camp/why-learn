@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {injectGlobal} from 'styled-components'
 
-const App = Component => class Application extends Component {
+class Application extends Component {
   componentWillMount() {
     injectGlobal`
       body {
@@ -16,10 +16,8 @@ const App = Component => class Application extends Component {
     `
   }
 
-  render = () => (
-    <Component {...this.props} />
-  )
+  render = () => this.props.children
 }
 
-export default App
+export default Children => props => <Application><Children {...props} /></Application>
 

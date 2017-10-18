@@ -2,7 +2,7 @@
   "presets": ["next/babel"],
   "plugins": [
     "transform-runtime",
-    ["emotion", {"inline": true}]
+    ["styled-components", {"ssr": true}]
   ]
 }
 
