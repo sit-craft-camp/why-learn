@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import styled, {keyframes} from 'styled-components'
-import axios from 'axios'
 import {Container, Row, Col} from 'reactstrap'
 
 import App from '../components/App'
