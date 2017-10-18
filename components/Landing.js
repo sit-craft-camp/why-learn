@@ -28,7 +28,7 @@ const blinking = keyframes`
 export const Tagline = styled.h1`
   display: flex;
   color: #555;
-  font-family: Helvetica Neue;
+  font-family: Roboto;
   font-weight: 300;
   font-size: 2.4em;
 

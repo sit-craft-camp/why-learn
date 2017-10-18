@@ -10,7 +10,7 @@ import App from '../components/App'
 import {Page, Tagline, Title, subjects} from '../components/Landing'
 
 const Logo = styled.h1`
-  font-family: Helvetica Neue;
+  font-family: Roboto;
   font-size: 4.6em;
   font-weight: 300;
   color: #555;
