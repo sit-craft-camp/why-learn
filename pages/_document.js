@@ -30,7 +30,10 @@ export default class BaseDocument extends Document {
         <title>Why Learn | Why do we have to learn this?</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {this.props.styleTags}
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link
+          href="https://fonts.googleapis.com/css?family=Roboto"
+          rel="stylesheet"
+        />
         <link
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
