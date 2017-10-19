@@ -40,6 +40,7 @@ export default class BaseDocument extends Document {
           integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
           crossorigin="anonymous"
         />
+        <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
       </Head>
       <body>
         <Main />
