@@ -3,18 +3,19 @@ pipeline {
   stages {
     stage ('build') {
       steps {
-        sh 'echo Build'
+        sh 'yarn install'
+        sh 'yarn Build'
       }
     }
     stage ('test') {
       steps {
-        sh 'echo Test'
         sh 'echo Test passed'
       }
     }
     stage ('development'){
       steps {
-        sh 'echo Develop'
+        sh 'pm2 delete --name "why-learn-dev-3000" :'
+        sh 'pm2 start npm --name "why-learn-dev-3000" -- start'
       }
     }
     stage ('production'){
