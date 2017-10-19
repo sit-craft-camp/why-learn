@@ -14,7 +14,7 @@ pipeline {
     }
     stage ('development'){
       steps {
-        sh 'sudo pm2 delete --name "why-learn-dev-3000" || :'
+        sh 'sudo pm2 delete "why-learn-dev-3000" || :'
         sh 'sudo pm2 start npm --name "why-learn-dev-3000" -- start'
       }
     }
