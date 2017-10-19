@@ -18,10 +18,11 @@ const blinking = keyframes`
 
 const Tagline = styled.h1`
   display: flex;
-  color: #555;
+  color: white;
   font-family: Roboto;
   font-weight: 300;
   font-size: 2.4em;
+  text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.18);
 
   > .Typist > .Cursor {
     display: inline-block;
