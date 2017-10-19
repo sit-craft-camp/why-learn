@@ -9,6 +9,7 @@ pipeline {
     stage ('test') {
       steps {
         sh 'echo Test'
+        sh 'echo Test passed'
       }
     }
     stage ('development'){
