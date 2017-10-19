@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 const Page = styled.div`
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
   align-items: center;
   justify-content: center;
@@ -15,6 +16,7 @@ const Page = styled.div`
 
 const Heading = styled.h2`
   margin: 0 auto;
+  margin-bottom: 1.5em;
 
   color: #666;
   font-weight: 300;
@@ -29,25 +31,22 @@ const Text = styled.p`
   font-size: 1.2em;
 `
 
-const Anchor = styled.a`
-
-`
+const Anchor = styled.a``
 
 const Error = ({statusCode}) => (
   <Page>
     <Heading>How did you get here? Impressive!</Heading>
     <Text>
-      I'm not really sure how you got here.
-      Would you mind going back, Please?
+      I'm not really sure how you got here. Would you mind going back, Please?
     </Text>
-    <Link href='/'>
+    <Link href="/">
       <Anchor>Go Back</Anchor>
     </Link>
   </Page>
 )
 
 Error.getInitialProps = ({res, jsonPageRes}) => {
-  const statusCode = res ? res.statusCode : (jsonPageRes && jsonPageRes.status)
+  const statusCode = res ? res.statusCode : jsonPageRes && jsonPageRes.status
 
   return {statusCode}
 }
