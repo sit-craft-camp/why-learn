@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import styled, {keyframes} from 'styled-components'
 import {Container, Row, Col} from 'reactstrap'
 
+import App from '../components/App'
+
 const Page = styled.div`
   display: flex;
   flex-direction: column;
@@ -10,20 +12,19 @@ const Page = styled.div`
 `
 
 const Character = styled.img`
-height: 100%;
-width: 50%;
-
+  height: 100%;
+  width: 50%;
 `
 
-const Detail =() => (
- <div> 
-    <div>
-    <h1>thief</h1>
-  </div>
+const Detail = () => (
   <div>
-    <h3>steal</h3>
+    <div>
+      <h1>Thief</h1>
+    </div>
+    <div>
+      <h3>Steal</h3>
+    </div>
   </div>
-</div>
 )
 
 const Nav = () => (
@@ -33,26 +34,18 @@ const Nav = () => (
   </div>
 )
 
-export default class Job extends Component {
- state={
-
- }
-render=()=> (
-<Page>
+const Subjects = ({url: {query: {id}}}) => (
+  <Page>
     <Row>
-    <Col>
-        <Character src='http://via.placeholder.com/500x600' />
-        
-    </Col>
-    <Col>
+      <Col>
+        <Character src="http://via.placeholder.com/500x600" />
+      </Col>
+      <Col>
         <Detail />
-    </Col> 
+      </Col>
     </Row>
-
-    
     <Nav />
-</Page>
-
-
+  </Page>
 )
-}
+
+export default App(Subjects)
