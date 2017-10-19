@@ -3,7 +3,7 @@ import {injectGlobal} from 'styled-components'
 
 class Application extends Component {
   componentWillMount() {
-    injectGlobal`
+    injectGlobal `
       body {
         margin: 0;
         font-family: Roboto, sans-serif;
@@ -19,5 +19,4 @@ class Application extends Component {
   render = () => this.props.children
 }
 
-export default Children => props => <Application><Children {...props} /></Application>
-
+export default Children => props => <Application><Children {...props}/></Application>
