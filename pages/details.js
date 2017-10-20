@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {Component} from 'react'
 import styled from 'styled-components'
 import {Row, Col} from 'reactstrap'
+import Link from 'next/link'
 
 import App from '../components/App'
 
@@ -16,6 +17,17 @@ const Character = styled.img`
   height: 100%;
   width: 50%;
 `
+
+const Detail = () => (
+  <div>
+    <div>
+      <h1>Thief</h1>
+    </div>
+    <div>
+      <h3>Steal</h3>
+    </div>
+  </div>
+)
 
 const Heading = styled.h2``
 
@@ -72,7 +84,6 @@ const Container = styled.main`
   max-width: 1000px;
   margin: 0 auto;
 `
-
 const Subjects = ({url: {query: {id}}}) => (
   <Page>
     <Container>
