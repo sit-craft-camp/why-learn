@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import styled, {keyframes} from 'styled-components'
-import {Container, Row, Col} from 'reactstrap'
+import styled from 'styled-components'
+import {Row, Col} from 'reactstrap'
 import Link from 'next/link'
 
 import App from '../components/App'
@@ -10,6 +10,7 @@ const Page = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
 `
 
 const Character = styled.img`
@@ -17,7 +18,6 @@ const Character = styled.img`
   width: 50%;
 `
 
-<<<<<<< Updated upstream:pages/details.js
 const Detail = () => (
   <div>
     <div>
@@ -26,63 +26,78 @@ const Detail = () => (
     <div>
       <h3>Steal</h3>
     </div>
-=======
-const Detail =() => (
- <div> 
-    <div>
-    <h1>job</h1>
-  </div>
-  <div>
-    <h3>alldetail</h3>
->>>>>>> Stashed changes:pages/job.js
   </div>
 )
+
+const Heading = styled.h2``
+
+const Desc = styled.span``
+
+const Card = styled.div``
+
+const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 1em;
+  outline: none;
+  border: none;
+  padding: 0.6em 1.2em;
+  color: #fff;
+  background: #e74c3c;
+  box-shadow: 0 4px #c0392b;
+`
+
+const Detail = () => (
+  <Card>
+    <Heading>Thief</Heading>
+    <Desc>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus eius
+      ullam nisi neque deleniti adipisci nobis blanditiis quia, id laboriosam
+      sint quidem atque accusantium. Maxime est modi tempora illum, eos!
+    </Desc>
+  </Card>
+)
+
+const NavWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 15em;
+  margin-top: 5em;
+`
 
 const Nav = () => (
-  <div>
-    <button>NEXT</button>
-    <button>PREV</button>
-  </div>
+  <NavWrapper>
+    <Button>PREV</Button>
+    <Button>NEXT</Button>
+  </NavWrapper>
 )
 
-<<<<<<< Updated upstream:pages/details.js
+const Container = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 1000px;
+  margin: 0 auto;
+`
 const Subjects = ({url: {query: {id}}}) => (
   <Page>
-    <Row>
-      <Col>
-        <Character src="http://via.placeholder.com/500x600" />
-      </Col>
-      <Col>
-        <Detail />
-      </Col>
-    </Row>
-    <Nav />
+    <Container>
+      <Row>
+        <Col>
+          <Character src="http://via.placeholder.com/700x600" />
+        </Col>
+        <Col>
+          <Detail />
+        </Col>
+      </Row>
+      <Nav />
+    </Container>
   </Page>
 )
 
 export default App(Subjects)
-=======
-export default class Job extends Component {
- state={
-
- }
-  render() {
-    return (
-      <Page>
-          <Row>
-          <Col>
-              <Character src='http://via.placeholder.com/500x600' />
-              
-          </Col>
-          <Col>
-              <Detail />
-          </Col> 
-          </Row>
-    
-          
-          <Nav />
-      </Page>
-      )
-  } 
-}
->>>>>>> Stashed changes:pages/job.js
