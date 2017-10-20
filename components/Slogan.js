@@ -16,13 +16,29 @@ const blinking = keyframes`
   }
 `
 
-const Tagline = styled.h1`
+export const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(2em) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1.0);
+  }
+`
+
+export const Tagline = styled.h1`
   display: flex;
   color: white;
   font-family: Roboto;
   font-weight: 300;
   font-size: 2.4em;
   text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.18);
+
+  animation-name: ${fadeIn};
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
 
   > .Typist > .Cursor {
     display: inline-block;
