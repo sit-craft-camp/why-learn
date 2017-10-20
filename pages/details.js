@@ -1,63 +1,105 @@
-import React, {Component} from 'react'
-import styled from 'styled-components'
+import React from 'react'
+import styled, {keyframes} from 'styled-components'
 import {Row, Col} from 'reactstrap'
-import Link from 'next/link'
+import Ink from 'react-ink'
 
 import App from '../components/App'
+import {subjects} from '../components/Landing'
 
+// background: #f6f9fc;
 const Page = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  background: linear-gradient(45deg, #00ffa1, aqua);
+
+  border-top: 3px solid white;
 `
 
-const Character = styled.img`
-  height: 100%;
-  width: 50%;
+const Tagline = styled.h1`
+  display: flex;
+  color: white;
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 2.4em;
+
+  margin-bottom: 1.3em;
 `
 
-const Detail = () => (
-  <div>
-    <div>
-      <h1>Thief</h1>
-    </div>
-    <div>
-      <h3>Steal</h3>
-    </div>
-  </div>
-)
-
-const Heading = styled.h2``
+const Heading = styled.h2`
+  margin-bottom: 0.6em;
+  font-weight: 400;
+`
 
 const Desc = styled.span``
 
-const Card = styled.div``
-
-const Button = styled.button`
+const Card = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  cursor: pointer;
-  border-radius: 8px;
-  font-size: 1em;
-  outline: none;
-  border: none;
-  padding: 0.6em 1.2em;
-  color: #fff;
-  background: #e74c3c;
-  box-shadow: 0 4px #c0392b;
+  color: #555;
+  padding: 1.5em 1.5em 1.5em 1.9em;
+  background: #ffffff;
+  box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+  font-weight: 300;
+
+  transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `
 
-const Detail = () => (
+const primary = '#007bff'
+const primaryHover = '#036cdd'
+
+const Button = styled.button`
+  position: relative;
+  border: none;
+  outline: none !important;
+  font-weight: 300;
+
+  margin-top: 1.8em;
+  box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+
+  color: #fff;
+  background: ${primary};
+
+  white-space: nowrap;
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-size: 1.25em;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: ${primaryHover};
+    transform: translateY(-0.3em);
+  }
+`
+
+const Detail = ({name, desc}) => (
   <Card>
-    <Heading>Thief</Heading>
-    <Desc>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus eius
-      ullam nisi neque deleniti adipisci nobis blanditiis quia, id laboriosam
-      sint quidem atque accusantium. Maxime est modi tempora illum, eos!
-    </Desc>
+    <Heading>{name}</Heading>
+    <Desc>{desc}</Desc>
+    <Left>
+      <Ink />
+      <Icon viewBox="0 0 24 24">
+        <path d="M15.422 16.078l-1.406 1.406-6-6 6-6 1.406 1.406-4.594 4.594z" />
+      </Icon>
+    </Left>
+    <Right>
+      <Ink />
+      <Icon viewBox="0 0 24 24">
+        <path d="M9.984 6l6 6-6 6-1.406-1.406 4.594-4.594-4.594-4.594z" />
+      </Icon>
+    </Right>
   </Card>
 )
 
@@ -68,12 +110,37 @@ const NavWrapper = styled.div`
   margin-top: 5em;
 `
 
-const Nav = () => (
-  <NavWrapper>
-    <Button>PREV</Button>
-    <Button>NEXT</Button>
-  </NavWrapper>
-)
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(4em) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1.0);
+  }
+`
+
+const Character = styled.div`
+  margin: 0 auto;
+  min-height: 17em;
+  height: 100%;
+  width: 9em;
+  background: linear-gradient(transparent, transparent, transparent, #06ffce), url("${props =>
+    props.src}") no-repeat center;
+  background-size: cover;
+
+  animation-name: ${fadeIn};
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  &:hover {
+    transform: translateY(-1em) scale(1.06);
+  }
+`
 
 const Container = styled.main`
   display: flex;
@@ -81,23 +148,80 @@ const Container = styled.main`
   align-items: center;
   justify-content: center;
 
-  max-width: 1000px;
+  animation-name: ${fadeIn};
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  max-width: 680px;
   margin: 0 auto;
+  padding: 0em 3em;
 `
-const Subjects = ({url: {query: {id}}}) => (
-  <Page>
-    <Container>
-      <Row>
-        <Col>
-          <Character src="http://via.placeholder.com/700x600" />
-        </Col>
-        <Col>
-          <Detail />
-        </Col>
-      </Row>
-      <Nav />
-    </Container>
-  </Page>
-)
+
+const Center = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`
+
+const Icon = styled.svg`
+  width: 2.1em;
+  height: 2.1em;
+  fill: white;
+`
+
+const NavBtn = styled.button`
+  appearance: none;
+  outline: none !important;
+
+  position: absolute;
+  padding: 0.18em;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: ${primary};
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  &:hover {
+    background: ${primaryHover};
+    transform: scale(1.08);
+  }
+`
+
+const Left = NavBtn.extend`left: -1.4em;`
+
+const Right = NavBtn.extend`right: -1.4em;`
+
+const Subjects = ({url: {query: {id}}}) => {
+  const subject = subjects.filter(x => x.name === id)[0] || {}
+  const image = `/static/${subject.image}.png`
+
+  return (
+    <Page>
+      <Tagline>
+        Why Learn <b>&nbsp;{id}</b>?
+      </Tagline>
+      <Container>
+        <Row>
+          <Character src={image} />
+          <Center>
+            <Detail name={subject.name} desc={subject.desc} />
+          </Center>
+        </Row>
+        <Button>
+          <Ink />
+          Get Started
+        </Button>
+      </Container>
+    </Page>
+  )
+}
 
 export default App(Subjects)
