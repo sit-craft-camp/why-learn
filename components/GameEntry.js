@@ -1,8 +1,6 @@
 import React from 'react'
 import styled, {keyframes} from 'styled-components'
-import Particle from 'react-particles-js'
 
-import {particle} from './Layout'
 import {Character} from './Selector'
 
 const fadeIn = keyframes`
@@ -63,7 +61,6 @@ const SubHeading = styled.h1`
 
 const GameEntry = () => (
   <div>
-    <Particle {...particle} />
     <Character src="/static/social.png" />
     <Box>
       <SubHeading>LEVEL ONE:</SubHeading>
