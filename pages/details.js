@@ -128,7 +128,7 @@ const NavWrapper = styled.div`
   margin-top: 5em;
 `
 
-const Character = styled.div`
+export const Character = styled.div`
   margin: 0 auto;
   min-height: 17em;
   height: 100%;
