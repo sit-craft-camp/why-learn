@@ -5,20 +5,8 @@ import Particles from 'react-particles-js'
 import Ink from 'react-ink'
 import jump from 'jump.js'
 
-import Slogan from '../components/Slogan'
-
-// Landing Fade In
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(4em) scale(0.9);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1.0);
-  }
-`
+import {fadeIn} from './Layout'
+import Slogan from './Slogan'
 
 // 110 - 220
 const hueRotate = keyframes`

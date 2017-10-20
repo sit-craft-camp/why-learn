@@ -28,12 +28,13 @@ const Container = styled.div`
   }
 `
 
-const Card = styled.div`
+const Card = styled.a`
   display: flex;
   flex-direction: column;
   align-items: center;
 
   width: 100%;
+  text-decoration: none !important;
 
   box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
   padding: 0.8em 0.8em 1.1em 0.8em;
@@ -62,7 +63,7 @@ const CardTitle = styled.h2`
   color: #666;
 `
 
-const CardImage = styled.a`
+const CardImage = styled.div`
   position: relative;
   display: flex;
   align-items: center;
@@ -102,9 +103,9 @@ const Subjects = () => (
                     alt={subject.name}
                   />
                 </CardImage>
-              </Link>
-              <CardTitle>{subject.name}</CardTitle>
-            </Card>
+                <CardTitle>{subject.name}</CardTitle>
+              </Card>
+            </Link>
           </Col>
         ))}
       </Row>

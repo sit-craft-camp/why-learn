@@ -5,7 +5,7 @@ import GameEntry from '../components/GameEntry'
 
 const Game = () => (
   <div>
-    <GameEntry/>
+    <GameEntry />
   </div>
 )
 
