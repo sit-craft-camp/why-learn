@@ -16,9 +16,9 @@ const Button = styled.button`
     
 const PsychoQA = () => (
     <Page>
-            <Question>
-                คำถาม
-            </Question>        
+        <Question>
+            คำถาม
+        </Question>        
         <Input />
         <Button>ส่งคำตอบ</Button>
     </Page>   
