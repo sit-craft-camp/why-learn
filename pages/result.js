@@ -48,7 +48,7 @@ const SLayout = styled.div`
 `
 
 const chosenJobs = jobs.filter(
-  x => ['นายกรัฐมนตรี', 'ทนายความ'].indexOf(x.name) > -1
+  x => ['ทนายความ', 'นายกรัฐมนตรี'].indexOf(x.name) > -1
 )
 
 console.info(chosenJobs)

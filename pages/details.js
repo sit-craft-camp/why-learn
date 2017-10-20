@@ -5,6 +5,7 @@ import Ink from 'react-ink'
 import Link from 'next/link'
 
 import App from '../components/App'
+import StandardButton from '../components/Button'
 import Jobs from '../components/Jobs'
 import {jobs} from '../components/Landing'
 
@@ -27,39 +28,10 @@ const Tagline = styled.h1`
   }
 `
 
-const primary = '#007bff'
-const primaryHover = '#036cdd'
-
-const Button = styled.a`
-  position: relative;
-  border: none;
-  outline: none !important;
-  font-weight: 300;
-
-  margin-top: 1.8em;
-  box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
-
-  text-decoration: none !important;
-  color: #fff !important;
-  background: ${primary};
-
-  white-space: nowrap;
-  padding: 8px 14px;
-  border-radius: 4px;
-  font-size: 1.25em;
-  font-weight: 300;
-  text-transform: uppercase;
-  letter-spacing: 0.025em;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  cursor: pointer;
-
-  animation-name: ${fadeIn};
-  animation-duration: 1s;
-  animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+const Button = StandardButton.extend`
+  margin-top: 2em;
 
   &:hover {
-    background: ${primaryHover};
     transform: translateY(-0.3em);
   }
 
@@ -100,7 +72,7 @@ const Subjects = ({url: {query: {id}}}) => (
       <Link href="/question" passHref prefetch>
         <Button>
           <Ink />
-          Get Started
+          ทดสอบความชอบของคุณ
         </Button>
       </Link>
     </Container>

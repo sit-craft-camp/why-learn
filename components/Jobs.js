@@ -18,11 +18,11 @@ export default class Jobs extends Component {
       if (this.state.index > 0) this.setState({index: this.state.index - 1})
     },
     right: () => {
-      if (this.state.index < this.props.data.length - 1) {
+      if (this.state.index < this.nav.max) {
         this.setState({index: this.state.index + 1})
       }
     },
-    max: this.props.data.length
+    max: this.props.data.length + (this.props.id ? 1 : 0)
   }
 
   componentWillMount() {

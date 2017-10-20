@@ -4,6 +4,7 @@ import {Row, Col} from 'reactstrap'
 
 import App from '../components/App'
 import Wave from '../components/Wave'
+import {Character} from '../components/Selector'
 import {Page, Card} from '../components/Layout'
 import GameEntry from '../components/GameEntry'
 
@@ -29,6 +30,9 @@ class Game extends Component {
         <Container>
           <Row>
             <Col>
+              <Character src="/static/president.png" />
+            </Col>
+            <Col>
               <Card>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Suscipit vero nihil exercitationem delectus recusandae fugit
@@ -36,11 +40,9 @@ class Game extends Component {
                 facere laudantium accusantium placeat ab!
               </Card>
             </Col>
-            <Col />
           </Row>
         </Container>
       )}
-      <Wave />
     </Page>
   )
 }

@@ -3,7 +3,7 @@ import styled, {keyframes} from 'styled-components'
 import Particle from 'react-particles-js'
 
 import {particle} from './Layout'
-import {Character} from '../pages/details'
+import {Character} from './Selector'
 
 const fadeIn = keyframes`
   from {
