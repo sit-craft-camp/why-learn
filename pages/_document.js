@@ -47,7 +47,7 @@ export default class BaseDocument extends Document {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {this.props.styleTags}
         <link
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400|Prompt:300"
           rel="stylesheet"
         />
         <link
@@ -56,7 +56,7 @@ export default class BaseDocument extends Document {
           integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
           crossorigin="anonymous"
         />
-        <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js" />
         <script dangerouslySetInnerHTML={{__html: fbScript}} />
       </Head>
       <body>
