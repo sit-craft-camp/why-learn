@@ -14,13 +14,13 @@ const Text = styled.h1`
   font-family: Prompt, Arial, sans-serif;
   text-align: center;
   margin-bottom: 0.5em;
-  font-size: 2em;
+  font-size: 1.4em;
   line-height: 1.3em;
 `
 
 const Container = styled.div`
   max-width: 600px;
-  padding: 2em 3em;
+  padding: 2em 1.5em;
 `
 
 const primary = '#007bff'
@@ -69,9 +69,11 @@ const Box = styled.div`
   min-height: 90vh;
 `
 
+const characters = ['ssj', 'pavin']
+
 const Question = ({text, choices, answer, id, onSubmit}) => (
   <Box>
-    <Character src="/static/ssj.png" />
+    <Character src={`/static/${characters[id]}.png`} />
     <Card className={`q${id}`}>
       <Text>{text}</Text>
       <Row>
@@ -82,7 +84,7 @@ const Question = ({text, choices, answer, id, onSubmit}) => (
               chosen={choiceIndex === answer}
             >
               <Ink />
-              {choice}
+              {choice.text}
             </Button>
           </Col>
         ))}
@@ -92,14 +94,42 @@ const Question = ({text, choices, answer, id, onSubmit}) => (
 )
 
 const questions = [
-  'สโตร์แฟลชเปียโนอัลมอนด์เซอร์วิส สปอร์ต เฟรมฉลุย นพมาศเอาต์โอเปร่า',
-  'สโตร์แฟลชเปียโนอัลมอนด์เซอร์วิส สปอร์ต เฟรมฉลุย นพมาศเอาต์โอเปร่า'
-]
-
-const choices = [
-  'สุนทรีย์ มิวสิคความหมาย ยากูซ่าผู้นำ',
-  'สุนทรีย์ มิวสิคความหมาย ยากูซ่าผู้นำ',
-  'สุนทรีย์ มิวสิคความหมาย ยากูซ่าผู้นำ'
+  {
+    question:
+      'คุณจะเริ่มต้นแก้ปัญหาอย่างไร หากโรงเรียนของคุณเกิดอุทกภัยขึ้นอย่างไม่มีสาเหตุ ทุกคนในโรงเรียนเกิดความวุ่นวาย และยังมีนักเรียนบางคนติดอยู่ในห้องเรียนอีกด้วย',
+    choices: [
+      {
+        text: 'หาต้นเหตุ',
+        score: {dictator: 2}
+      },
+      {
+        text: 'สังเกตสภาพแวดล้อม',
+        score: {dictator: 1}
+      },
+      {
+        text: 'ตั้งสติ',
+        score: {dictator: 3}
+      }
+    ]
+  },
+  {
+    question:
+      'สโตร์แฟลชเปียโนอัลมอนด์เซอร์วิส สปอร์ต เฟรมฉลุย นพมาศเอาต์โอเปร่า',
+    choices: [
+      {
+        text: 'สุนทรีย์ มิวสิคความหมาย ยากูซ่าผู้นำ',
+        score: {dictator: 2}
+      },
+      {
+        text: 'สุนทรีย์ มิวสิคความหมาย ยากูซ่าผู้นำ',
+        score: {dictator: 1}
+      },
+      {
+        text: 'สุนทรีย์ มิวสิคความหมาย ยากูซ่าผู้นำ',
+        score: {dictator: 3}
+      }
+    ]
+  }
 ]
 
 class PsychoQuestion extends Component {
@@ -112,19 +142,19 @@ class PsychoQuestion extends Component {
     answers[answer] = choice
     this.setState({answers})
 
-    setTimeout(() => jump(`.q${answer + 1}`), 600)
+    setTimeout(() => jump(`.q${answer + 1}`), 500)
   }
 
   render = () => (
     <Page>
       <Particle {...particle} />
       <Container>
-        {questions.map((question, index) => (
+        {questions.map((item, index) => (
           <Question
             key={index}
             id={index}
-            text={question}
-            choices={choices}
+            text={item.question}
+            choices={item.choices}
             answer={this.state.answers[index]}
             onSubmit={this.handleSubmit}
           />

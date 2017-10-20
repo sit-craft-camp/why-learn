@@ -81,7 +81,7 @@ const GameEntry = () => (
     <Particle {...particle} />
     <Character src="/static/social.png" />
     <Box>
-      <SubHeading>WELCOME TO</SubHeading>
+      <SubHeading>LEVEL ONE:</SubHeading>
       <Heading>DEKKAPOK</Heading>
     </Box>
   </Backdrop>
