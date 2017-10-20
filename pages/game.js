@@ -1,13 +1,14 @@
 import React from 'react'
 
 import Login from '../components/Login'
+import App from '../components/App'
 import GameEntry from '../components/GameEntry'
 
-const Game = ()=> (
+const Game = () => (
   <div>
     <GameEntry/>
     <Login />
   </div>
 )
 
-export default Game
+export default App(Game)
