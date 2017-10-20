@@ -2,7 +2,7 @@ import React from 'react'
 import styled, {keyframes} from 'styled-components'
 
 // Fade In
-const fadeIn = keyframes`
+export const fadeIn = keyframes`
   from {
     opacity: 0;
     transform: translateY(4em) scale(0.9);
@@ -22,7 +22,7 @@ export const Page = styled.div`
   min-height: 100vh;
   background: linear-gradient(45deg, #00b7ff, #ffffc7);
   position: relative;
-
+  width: 100%;
   border-top: 3px solid white;
 `
 

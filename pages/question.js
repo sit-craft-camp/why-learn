@@ -7,7 +7,7 @@ import Router from 'next/router'
 import jump from 'jump.js'
 
 import App from '../components/App'
-import {Character} from './details'
+import {Character} from '../components/Selector'
 import {Page, Card, particle} from '../components/Layout'
 
 const Text = styled.h1`
@@ -35,8 +35,6 @@ const Button = styled.button`
   border: none;
   outline: none !important;
   width: 100%;
-
-  font-weight: 300;
 
   text-decoration: none !important;
   color: #fff !important;
@@ -145,7 +143,7 @@ class PsychoQuestion extends Component {
 
     setTimeout(() => {
       if (answer === questions.length - 1) {
-        Router.push('/game')
+        Router.push('/result')
       } else {
         jump(`.q${answer + 1}`)
       }
