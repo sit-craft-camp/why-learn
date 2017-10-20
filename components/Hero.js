@@ -96,7 +96,7 @@ const ScrollDown = styled.svg`
   }
 `
 
-const particle = {
+export const particle = {
   style: {
     position: 'absolute',
     top: 0,
