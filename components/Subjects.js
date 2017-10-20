@@ -38,7 +38,7 @@ const Card = styled.div`
   box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
   padding: 0.8em 0.8em 1.1em 0.8em;
   background: white;
-  transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
 
   max-width: 16em;
   margin: 0 auto;

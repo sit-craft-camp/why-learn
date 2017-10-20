@@ -81,7 +81,7 @@ const ScrollDown = styled.svg`
   border-radius: 50%;
 
   font-size: 1.8em;
-  background: linear-gradient(45deg, #333, #5a5454);
+  background: #333;
   cursor: pointer;
   fill: #ffffff;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
