@@ -25,7 +25,7 @@ const Backdrop = styled.div`
   min-height: 100vh;
   position: relative;
 
-  background: linear-gradient(45deg, #00ffa1, aqua);
+  background: linear-gradient(45deg, #00b7ff, #ffffc7);
 `
 
 // background: repeating-linear-gradient(
@@ -65,7 +65,7 @@ const Heading = styled.h1`
   font-family: Roboto, Helvetica Neue, sans-serif;
   letter-spacing: 0.2em;
 
-  background: linear-gradient(45deg, #00ffa1, aqua);
+  background: linear-gradient(45deg, #00b7ff, #ffffc7);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 `

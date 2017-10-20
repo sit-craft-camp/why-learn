@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {Row, Col} from 'reactstrap'
 import Particle from 'react-particles-js'
 import Ink from 'react-ink'
+import Router from 'next/router'
 import jump from 'jump.js'
 
 import App from '../components/App'
@@ -142,7 +143,13 @@ class PsychoQuestion extends Component {
     answers[answer] = choice
     this.setState({answers})
 
-    setTimeout(() => jump(`.q${answer + 1}`), 500)
+    setTimeout(() => {
+      if (answer === questions.length - 1) {
+        Router.push('/game')
+      } else {
+        jump(`.q${answer + 1}`)
+      }
+    }, 500)
   }
 
   render = () => (

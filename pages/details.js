@@ -115,7 +115,7 @@ export const Character = styled.div`
   min-height: 17em;
   height: 100%;
   width: 9em;
-  background: linear-gradient(transparent, transparent, transparent, #06ffce), url("${props =>
+  background: linear-gradient(transparent, transparent, transparent, #8dd9e7), url("${props =>
     props.src}") no-repeat center;
   background-size: cover;
 
