@@ -21,7 +21,9 @@
     "styled-components": "^2.2.1"
   },
   "scripts": {
-    "dev": "next"
+    "dev": "next",
+    "start": "NODE_ENV=production next start",
+    "build": "NODE_ENV=production next build"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
