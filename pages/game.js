@@ -7,7 +7,7 @@ import App from '../components/App'
 import Question from '../components/Question'
 import Wave from '../components/Wave'
 import {Character} from '../components/Selector'
-import {Page, Card, particle} from '../components/Layout'
+import {Page, Card, particle, fadeIn} from '../components/Layout'
 import GameEntry from '../components/GameEntry'
 import {questions} from '../components/Landing'
 
@@ -16,17 +16,36 @@ const Container = styled.div`
   padding: 0 2.5em;
 `
 
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+
+const Zeeza = styled.div`
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-image: url(/static/scene_intro.gif);
+  mix-blend-mode: lighten;
+
+  animation-name: ${fadeIn};
+  animation-duration: 0.8s;
+  animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+`
+
 class Game extends Component {
   state = {
     loading: true,
+    intro: false,
+    ready: false,
     index: 0,
     answers: []
   }
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({loading: false})
-    }, 3000)
+  async componentDidMount() {
+    await delay(3000)
+    this.setState({loading: false, intro: true})
+    await delay(5000)
+    this.setState({intro: false, ready: true})
   }
 
   handleSubmit = () => {}
@@ -34,9 +53,9 @@ class Game extends Component {
   render = () => (
     <Page>
       <Particle {...particle} />
-      {this.state.loading ? (
-        <GameEntry />
-      ) : (
+      {this.state.intro && <Zeeza />}
+      {this.state.loading && <GameEntry />}
+      {this.state.ready && (
         <Container>
           <Row>
             <Col>
