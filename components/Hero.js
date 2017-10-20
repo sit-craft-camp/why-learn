@@ -159,7 +159,7 @@ const Hero = () => (
     <ScrollDown viewBox="0 0 24 24" onClick={() => jump('.menus')}>
       <path d="M7.406 7.828l4.594 4.594 4.594-4.594 1.406 1.406-6 6-6-6z" />
     </ScrollDown>
-    <HeroBanner src="/static/banner.png" />
+    <HeroBanner src="/static/bannercolor.png" />
   </Backdrop>
 )
 

@@ -13,33 +13,53 @@ export const Page = styled.div`
   min-height: 100vh;
 `
 
-const CharacterImage = styled.img`
-  width: 9.5em;
-  height: 16.5em;
-`
-
-export const Character = ({index}) => <CharacterImage src={getChar(index)} />
-
 const lorem =
   'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident accusantium, expedita, deleniti sed, odit modi vitae nemo eius quae iste hic numquam quibusdam! Nobis, molestias, neque aliquam hic vel eveniet!'
 
 export const subjects = [
   {
-    name: 'Mathematics',
+    name: 'Art and Design',
     desc: lorem,
-    image: 'art',
-    color: '#f27435'
+    image: 'artcolor',
+    color: '#2fac3d'
   },
   {
-    name: 'Computer',
+    name: 'Mathematics',
     desc: lorem,
-    image: 'social',
-    color: '#2fac3d'
+    image: 'math',
+    color: '#ef2475'
   },
   {
     name: 'Science',
     desc: lorem,
-    image: 'art',
-    color: '#ef2475'
+    image: 'scicolor',
+    color: '#f1c40f'
+  },
+  {
+    name: 'Social Studies',
+    desc: lorem,
+    image: 'socialcolor',
+    color: '#f27435'
+  }
+]
+
+export const jobs = [
+  {
+    name: 'นายกรัฐมนตรี',
+    desc:
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet, laborum ab',
+    image: '/static/president.png'
+  },
+  {
+    name: 'ตำรวจไทย',
+    desc:
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet, laborum ab',
+    image: '/static/police.png'
+  },
+  {
+    name: 'ทนายความ',
+    desc:
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet, laborum ab',
+    image: '/static/lawgirl.png'
   }
 ]

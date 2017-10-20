@@ -54,7 +54,7 @@ export default class BaseDocument extends Document {
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
           integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         />
         <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js" />
         <script dangerouslySetInnerHTML={{__html: fbScript}} />

@@ -48,7 +48,7 @@ const Card = styled.a`
     transform: translateY(-1em);
   }
 
-  @media screen and (max-width: 680px) {
+  @media screen and (max-width: 800px) {
     margin-bottom: 1.8em;
   }
 `
@@ -85,15 +85,16 @@ const Heading = styled.h1`
   text-align: center;
   font-size: 2.2em;
   margin-bottom: 1.3em;
+  font-family: Prompt, Helvetica Neue, Roboto, sans-serif;
 `
 
 const Subjects = () => (
   <Section className="menus">
     <Container>
-      <Heading>Choose Your Destiny. Wisely.</Heading>
+      <Heading>มาลองหาคำตอบกันว่า เราเรียนวิชานี้ไปเพื่ออะไร</Heading>
       <Row>
         {subjects.map((subject, index) => (
-          <Col md={4} xs={12} key={index}>
+          <Col md={3} sm={6} xs={12} key={index}>
             <Link href={`/details?id=${subject.name}`} passHref prefetch>
               <Card>
                 <CardImage color={subject.color}>

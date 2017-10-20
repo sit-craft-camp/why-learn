@@ -3,7 +3,7 @@ import styled, {keyframes} from 'styled-components'
 import Particle from 'react-particles-js'
 
 import {particle} from './Layout'
-import {Character} from '../pages/details'
+import {Character} from './Selector'
 
 const fadeIn = keyframes`
   from {
@@ -16,25 +16,6 @@ const fadeIn = keyframes`
     transform: translateY(0) scale(1.0);
   }
 `
-
-const Backdrop = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  position: relative;
-
-  background: linear-gradient(45deg, #00b7ff, #ffffc7);
-`
-
-// background: repeating-linear-gradient(
-//   45deg,
-//   #00ffa1,
-//   #00ffa1 15px,
-//   #00ffff 15px,
-//   #00ffff 30px
-// );
 
 const Box = styled.div`
   display: flex;
@@ -81,14 +62,14 @@ const SubHeading = styled.h1`
 `
 
 const GameEntry = () => (
-  <Backdrop>
+  <div>
     <Particle {...particle} />
     <Character src="/static/social.png" />
     <Box>
       <SubHeading>LEVEL ONE:</SubHeading>
       <Heading>DEKKAPOK</Heading>
     </Box>
-  </Backdrop>
+  </div>
 )
 
 export default GameEntry
