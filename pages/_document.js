@@ -4,6 +4,22 @@ import {ServerStyleSheet} from 'styled-components'
 
 const dev = process.env.NODE_ENV !== 'production'
 
+const fbScript = `
+  function fbLoader(d, s, id) {
+    let js = ''
+    let fjs = d.getElementsByTagName(s)[0]
+
+    if (d.getElementById(id)) return
+
+    js = d.createElement(s)
+    js.id = id
+    js.src = 'https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v2.10&appId=153854811888809'
+    fjs.parentNode.insertBefore(js, fjs)
+  }
+
+  fbLoader(document, 'script', 'facebook-jssdk')
+`
+
 export default class BaseDocument extends Document {
   // This will extract the critical stylesheets and render the page.
   static getInitialProps({renderPage}) {
@@ -40,6 +56,8 @@ export default class BaseDocument extends Document {
           integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
           crossorigin="anonymous"
         />
+        <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+        <script dangerouslySetInnerHTML={{__html: fbScript}} />
       </Head>
       <body>
         <Main />
