@@ -63,8 +63,7 @@ const Right = NavBtn.extend`right: -1.4em;`
 export const Character = styled.div`
   margin: 0 auto;
   min-height: 17em;
-  height: 100%;
-  width: 9em;
+  width: 12em;
   background: linear-gradient(transparent, transparent, transparent, #8dd9e7), url("${props =>
     props.src}") no-repeat center;
   background-size: cover;
@@ -92,6 +91,7 @@ const NavButton = ({C, onClick, icon}) => (
 const Heading = styled.h2`
   margin-bottom: 0.6em;
   font-weight: 400;
+  font-family: Roboto, Helvetica Neue, Prompt, Arial, sans-serif;
 `
 
 const Desc = styled.span``

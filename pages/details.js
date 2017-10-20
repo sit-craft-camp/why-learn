@@ -5,8 +5,8 @@ import Ink from 'react-ink'
 import Link from 'next/link'
 
 import App from '../components/App'
-import Selector from '../components/Selector'
-import {subjects} from '../components/Landing'
+import Jobs from '../components/Jobs'
+import {jobs} from '../components/Landing'
 
 import {Page, Card, fadeIn} from '../components/Layout'
 
@@ -90,72 +90,13 @@ const Container = styled.main`
   padding: 0em 3em;
 `
 
-const jobs = [
-  {
-    name: 'Politician',
-    desc:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet, laborum ab',
-    image: '/static/pavin.png'
-  },
-  {
-    name: 'Presidential Candidate',
-    desc:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet, laborum ab',
-    image: '/static/ssj.png'
-  }
-]
-
-class Jobs extends Component {
-  state = {
-    index: 0
-  }
-
-  nav = {
-    left: () => {
-      if (this.state.index > 0) this.setState({index: this.state.index - 1})
-    },
-    right: () => {
-      if (this.state.index < subjects.length - 1) {
-        this.setState({index: this.state.index + 1})
-      }
-    },
-    max: subjects.length
-  }
-
-  componentWillMount() {
-    this.subject = subjects.filter(x => x.name === this.props.id)[0] || {}
-  }
-
-  render() {
-    if (this.state.index === 0) {
-      return (
-        <Selector
-          image={`/static/${this.subject.image}.png`}
-          name={`Why do we learn ${this.subject.name}?`}
-          desc={`${this.subject.desc} Press Right to Find Out!`}
-          index={this.state.index}
-          {...this.nav}
-        />
-      )
-    }
-
-    return (
-      <Selector
-        index={this.state.index}
-        {...jobs[this.state.index - 1]}
-        {...this.nav}
-      />
-    )
-  }
-}
-
 const Subjects = ({url: {query: {id}}}) => (
   <Page>
     <Tagline>
       Why Learn <b>&nbsp;{id}</b>?
     </Tagline>
     <Container>
-      <Jobs id={id} />
+      <Jobs id={id} data={jobs} />
       <Link href="/question" passHref prefetch>
         <Button>
           <Ink />

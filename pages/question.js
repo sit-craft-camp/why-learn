@@ -68,12 +68,12 @@ const Box = styled.div`
   min-height: 90vh;
 `
 
-const characters = ['ssj', 'pavin']
+const characters = ['social', 'art', 'social']
 
 const Question = ({text, choices, answer, id, onSubmit}) => (
-  <Box>
+  <Box className={`q${id}`}>
     <Character src={`/static/${characters[id]}.png`} />
-    <Card className={`q${id}`}>
+    <Card>
       <Text>{text}</Text>
       <Row>
         {choices.map((choice, choiceIndex) => (
@@ -99,33 +99,95 @@ const questions = [
     choices: [
       {
         text: 'หาต้นเหตุ',
-        score: {dictator: 2}
+        score: {
+          president: 20,
+          police: 0,
+          lawyer: 0
+        }
       },
       {
         text: 'สังเกตสภาพแวดล้อม',
-        score: {dictator: 1}
+        score: {
+          president: 6,
+          police: 24,
+          lawyer: 3
+        }
       },
       {
         text: 'ตั้งสติ',
-        score: {dictator: 3}
+        score: {
+          president: 8,
+          police: 26,
+          lawyer: 2
+        }
       }
     ]
   },
   {
     question:
-      'สโตร์แฟลชเปียโนอัลมอนด์เซอร์วิส สปอร์ต เฟรมฉลุย นพมาศเอาต์โอเปร่า',
+      'หากคุณต้องการจะสร้างห้องสมุดชุมชน คุณคิดว่าควรคำนึงถึงใดเป็นสำคัญ',
     choices: [
       {
-        text: 'สุนทรีย์ มิวสิคความหมาย ยากูซ่าผู้นำ',
-        score: {dictator: 2}
+        text: 'ความโดดเด่น',
+        score: {
+          president: 27,
+          police: 9,
+          lawyer: 0
+        }
       },
       {
-        text: 'สุนทรีย์ มิวสิคความหมาย ยากูซ่าผู้นำ',
-        score: {dictator: 1}
+        text: 'เป็นส่วนรวม',
+        score: {
+          president: 6,
+          police: 12,
+          lawyer: 12
+        }
       },
       {
-        text: 'สุนทรีย์ มิวสิคความหมาย ยากูซ่าผู้นำ',
-        score: {dictator: 3}
+        text: 'เป็นระเบียบ',
+        score: {
+          president: 0,
+          police: 18,
+          lawyer: 18
+        }
+      }
+    ]
+  },
+  {
+    question:
+      'ปัจจุบันคุณคิดว่า ปัจจัยในสังคมใดเป็นปัจจัยที่สำคัญมากที่สุดในการดำรงชีวิต',
+    choices: [
+      {
+        text: 'บทบาทหน้าที่',
+        score: {
+          president: 12,
+          police: 9,
+          lawyer: 0
+        }
+      },
+      {
+        text: 'สิทธิเสรีภาพ',
+        score: {
+          president: 0,
+          police: 9,
+          lawyer: 9
+        }
+      },
+      {
+        text: 'กฎหมาย',
+        score: {
+          president: 0,
+          police: 9,
+          lawyer: 9
+        }
+      },
+      {
+        text: 'วัฒนธรรม',
+        score: {
+          president: 12,
+          police: 0,
+          lawyer: 9
+        }
       }
     ]
   }

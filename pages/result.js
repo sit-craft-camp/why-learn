@@ -1,9 +1,13 @@
 import React from 'react'
 import styled, {keyframes} from 'styled-components'
 import Particle from 'react-particles-js'
+import Ink from 'react-ink'
+import Router from 'next/router'
 
 import App from '../components/App'
-import Selector from '../components/Selector'
+import Button from '../components/Button'
+import Jobs from '../components/Jobs'
+import {jobs} from '../components/Landing'
 import {Page, Card, particle, fadeIn} from '../components/Layout'
 
 const Heading = styled.h1`
@@ -39,15 +43,15 @@ const SLayout = styled.div`
   justify-content: center;
 
   margin-top: 2.4em;
+  margin-bottom: 1.8em;
   text-align: center;
 `
 
-const jobs = {
-  name: 'Software Developer',
-  desc:
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id vitae, numquam, adipisci sit repellat obcaecati ullam excepturi.',
-  image: '/static/pavin.png'
-}
+const chosenJobs = jobs.filter(
+  x => ['นายกรัฐมนตรี', 'ทนายความ'].indexOf(x.name) > -1
+)
+
+console.info(chosenJobs)
 
 const result = () => (
   <Page>
@@ -56,7 +60,11 @@ const result = () => (
       <Card>
         <Heading>อาชีพที่คุณอาจสนใจ</Heading>
       </Card>
-      <Selector {...jobs} C={SLayout} />
+      <Jobs C={SLayout} data={chosenJobs} />
+      <Button onClick={() => Router.push('/game')}>
+        <Ink />
+        ลองทดสอบความสามารถ
+      </Button>
     </Container>
   </Page>
 )
