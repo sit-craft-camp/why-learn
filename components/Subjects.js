@@ -11,15 +11,15 @@ import Hero from '../components/Hero'
 import {subjects} from '../components/Landing'
 
 const Section = styled.section`
-  background: #efefef;
-  min-height: 20em;
+  background: #f6f9fc;
+  min-height: 27em;
 `
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  padding: 2.5em 3em;
+  padding: 4em 3em;
   max-width: 1200px;
   margin: 0 auto;
 
@@ -35,12 +35,17 @@ const Card = styled.div`
 
   width: 100%;
 
-  box-shadow: 0 1px 1.5px 1px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
   padding: 0.8em 0.8em 1.1em 0.8em;
   background: white;
+  transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
 
   max-width: 16em;
   margin: 0 auto;
+
+  &:hover {
+    transform: translateY(-1em);
+  }
 `
 
 const CardTitle = styled.h2`
@@ -74,7 +79,7 @@ const Heading = styled.h1`
   color: #555;
   text-align: center;
   font-size: 2.2em;
-  margin-bottom: 0.7em;
+  margin-bottom: 1.3em;
 `
 
 const Subjects = () => (

@@ -20,19 +20,25 @@ const CharacterImage = styled.img`
 
 export const Character = ({index}) => <CharacterImage src={getChar(index)} />
 
+const lorem =
+  'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident accusantium, expedita, deleniti sed, odit modi vitae nemo eius quae iste hic numquam quibusdam! Nobis, molestias, neque aliquam hic vel eveniet!'
+
 export const subjects = [
   {
     name: 'Mathematics',
+    desc: lorem,
     image: 'art',
     color: '#f27435'
   },
   {
     name: 'Computer',
+    desc: lorem,
     image: 'social',
     color: '#2fac3d'
   },
   {
     name: 'Science',
+    desc: lorem,
     image: 'art',
     color: '#ef2475'
   }

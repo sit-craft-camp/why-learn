@@ -7,6 +7,19 @@ import jump from 'jump.js'
 
 import Slogan from '../components/Slogan'
 
+// Landing Fade In
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(4em) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1.0);
+  }
+`
+
 // 110 - 220
 const hueRotate = keyframes`
   0% {
@@ -47,6 +60,10 @@ const Logo = styled.img`
   width: 60%;
   max-width: 600px;
   user-select: none;
+
+  animation-name: ${fadeIn};
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
 `
 
 const ScrollDown = styled.svg`
@@ -68,6 +85,10 @@ const ScrollDown = styled.svg`
   cursor: pointer;
   fill: #ffffff;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+
+  animation-name: ${fadeIn};
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
 
   &:hover {
     background: #39393c;
@@ -115,12 +136,17 @@ const particle = {
     }
   }
 }
+
 const HeroBanner = styled.img`
   display: flex;
   position: absolute;
   bottom: 0;
   height: 36%;
   pointer-events: none;
+
+  animation-name: ${fadeIn};
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
 `
 
 const Heading = styled.div`
