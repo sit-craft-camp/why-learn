@@ -20,7 +20,7 @@ export const Page = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(45deg, #00ffa1, aqua);
+  background: linear-gradient(45deg, #00b7ff, #ffffc7);
   position: relative;
 
   border-top: 3px solid white;
