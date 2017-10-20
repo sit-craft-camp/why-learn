@@ -9,7 +9,7 @@
     "axios": "^0.16.2",
     "babel-plugin-styled-components": "^1.2.1",
     "jump.js": "^1.0.2",
-    "next": "^4.0.5",
+    "next": "^4.1.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-ink": "^6.2.0",
