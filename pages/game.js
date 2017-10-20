@@ -1,10 +1,12 @@
 import React from 'react'
+
+import App from '../components/App'
 import GameEntry from '../components/GameEntry'
 
-const Game = ()=> (
+const Game = () => (
   <div>
-    <GameEntry/>
+    <GameEntry />
   </div>
 )
 
-export default Game
+export default App(Game)

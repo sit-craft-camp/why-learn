@@ -2,9 +2,22 @@ import React from 'react'
 import styled, {keyframes} from 'styled-components'
 import {Row, Col} from 'reactstrap'
 import Ink from 'react-ink'
+import Link from 'next/link'
 
 import App from '../components/App'
 import {subjects} from '../components/Landing'
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(4em) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1.0);
+  }
+`
 
 // background: #f6f9fc;
 const Page = styled.div`
@@ -55,7 +68,7 @@ const Card = styled.div`
 const primary = '#007bff'
 const primaryHover = '#036cdd'
 
-const Button = styled.button`
+const Button = styled.a`
   position: relative;
   border: none;
   outline: none !important;
@@ -64,7 +77,8 @@ const Button = styled.button`
   margin-top: 1.8em;
   box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
 
-  color: #fff;
+  text-decoration: none !important;
+  color: #fff !important;
   background: ${primary};
 
   white-space: nowrap;
@@ -84,22 +98,26 @@ const Button = styled.button`
   }
 `
 
+const NavButton = ({C, href, icon}) => (
+  <Link href={href} passHref prefetch>
+    <C>
+      <Ink />
+      <Icon viewBox="0 0 24 24">
+        <path d={icon} />
+      </Icon>
+    </C>
+  </Link>
+)
+
+const leftIcon = 'M15.422 16.078l-1.406 1.406-6-6 6-6 1.406 1.406-4.594 4.594z'
+const rightIcon = 'M9.984 6l6 6-6 6-1.406-1.406 4.594-4.594-4.594-4.594z'
+
 const Detail = ({name, desc}) => (
   <Card>
     <Heading>{name}</Heading>
     <Desc>{desc}</Desc>
-    <Left>
-      <Ink />
-      <Icon viewBox="0 0 24 24">
-        <path d="M15.422 16.078l-1.406 1.406-6-6 6-6 1.406 1.406-4.594 4.594z" />
-      </Icon>
-    </Left>
-    <Right>
-      <Ink />
-      <Icon viewBox="0 0 24 24">
-        <path d="M9.984 6l6 6-6 6-1.406-1.406 4.594-4.594-4.594-4.594z" />
-      </Icon>
-    </Right>
+    <NavButton href="/details?id=Mathematics" icon={leftIcon} C={Left} />
+    <NavButton href="/details?id=Computer" icon={rightIcon} C={Right} />
   </Card>
 )
 
@@ -108,18 +126,6 @@ const NavWrapper = styled.div`
   justify-content: space-around;
   width: 15em;
   margin-top: 5em;
-`
-
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(4em) scale(0.9);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1.0);
-  }
 `
 
 const Character = styled.div`
@@ -171,7 +177,7 @@ const Icon = styled.svg`
   fill: white;
 `
 
-const NavBtn = styled.button`
+const NavBtn = styled.a`
   appearance: none;
   outline: none !important;
 
@@ -215,10 +221,12 @@ const Subjects = ({url: {query: {id}}}) => {
             <Detail name={subject.name} desc={subject.desc} />
           </Center>
         </Row>
-        <Button>
-          <Ink />
-          Get Started
-        </Button>
+        <Link href="/game?id=Programmer" passHref prefetch>
+          <Button>
+            <Ink />
+            Get Started
+          </Button>
+        </Link>
       </Container>
     </Page>
   )
