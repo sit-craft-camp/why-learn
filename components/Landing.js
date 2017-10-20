@@ -63,3 +63,104 @@ export const jobs = [
     image: '/static/lawgirl.png'
   }
 ]
+
+export const questions = [
+  {
+    question:
+      'คุณจะเริ่มต้นแก้ปัญหาอย่างไร หากโรงเรียนของคุณเกิดอุทกภัยขึ้นอย่างไม่มีสาเหตุ ทุกคนในโรงเรียนเกิดความวุ่นวาย และยังมีนักเรียนบางคนติดอยู่ในห้องเรียนอีกด้วย',
+    choices: [
+      {
+        text: 'หาต้นเหตุ',
+        score: {
+          president: 20,
+          police: 0,
+          lawyer: 0
+        }
+      },
+      {
+        text: 'สังเกตสภาพแวดล้อม',
+        score: {
+          president: 6,
+          police: 24,
+          lawyer: 3
+        }
+      },
+      {
+        text: 'ตั้งสติ',
+        score: {
+          president: 8,
+          police: 26,
+          lawyer: 2
+        }
+      }
+    ]
+  },
+  {
+    question:
+      'หากคุณต้องการจะสร้างห้องสมุดชุมชน คุณคิดว่าควรคำนึงถึงใดเป็นสำคัญ',
+    choices: [
+      {
+        text: 'ความโดดเด่น',
+        score: {
+          president: 27,
+          police: 9,
+          lawyer: 0
+        }
+      },
+      {
+        text: 'เป็นส่วนรวม',
+        score: {
+          president: 6,
+          police: 12,
+          lawyer: 12
+        }
+      },
+      {
+        text: 'เป็นระเบียบ',
+        score: {
+          president: 0,
+          police: 18,
+          lawyer: 18
+        }
+      }
+    ]
+  },
+  {
+    question:
+      'ปัจจุบันคุณคิดว่า ปัจจัยในสังคมใดเป็นปัจจัยที่สำคัญมากที่สุดในการดำรงชีวิต',
+    choices: [
+      {
+        text: 'บทบาทหน้าที่',
+        score: {
+          president: 12,
+          police: 9,
+          lawyer: 0
+        }
+      },
+      {
+        text: 'สิทธิเสรีภาพ',
+        score: {
+          president: 0,
+          police: 9,
+          lawyer: 9
+        }
+      },
+      {
+        text: 'กฎหมาย',
+        score: {
+          president: 0,
+          police: 9,
+          lawyer: 9
+        }
+      },
+      {
+        text: 'วัฒนธรรม',
+        score: {
+          president: 12,
+          police: 0,
+          lawyer: 9
+        }
+      }
+    ]
+  }
+]

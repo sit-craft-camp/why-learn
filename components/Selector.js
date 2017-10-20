@@ -62,7 +62,7 @@ const Right = NavBtn.extend`right: -1.4em;`
 
 export const Character = styled.div`
   margin: 0 auto;
-  min-height: 17em;
+  min-height: 20em;
   width: 12em;
   background: linear-gradient(transparent, transparent, transparent, #8dd9e7), url("${props =>
     props.src}") no-repeat center;

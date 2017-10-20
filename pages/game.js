@@ -1,12 +1,15 @@
 import React, {Component} from 'react'
 import styled from 'styled-components'
 import {Row, Col} from 'reactstrap'
+import Particle from 'react-particles-js'
 
 import App from '../components/App'
+import Question from '../components/Question'
 import Wave from '../components/Wave'
 import {Character} from '../components/Selector'
-import {Page, Card} from '../components/Layout'
+import {Page, Card, particle} from '../components/Layout'
 import GameEntry from '../components/GameEntry'
+import {questions} from '../components/Landing'
 
 const Container = styled.div`
   max-width: 800px;
@@ -14,7 +17,11 @@ const Container = styled.div`
 `
 
 class Game extends Component {
-  state = {loading: true}
+  state = {
+    loading: true,
+    index: 0,
+    answers: []
+  }
 
   componentDidMount() {
     setTimeout(() => {
@@ -22,8 +29,11 @@ class Game extends Component {
     }, 3000)
   }
 
+  handleSubmit = () => {}
+
   render = () => (
     <Page>
+      <Particle {...particle} />
       {this.state.loading ? (
         <GameEntry />
       ) : (
@@ -33,12 +43,13 @@ class Game extends Component {
               <Character src="/static/president.png" />
             </Col>
             <Col>
-              <Card>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Suscipit vero nihil exercitationem delectus recusandae fugit
-                sunt dicta animi, alias, neque ullam aut, omnis laborum eum
-                facere laudantium accusantium placeat ab!
-              </Card>
+              <Question
+                id={this.state.index}
+                text={questions[this.state.index].question}
+                choices={questions[this.state.index].choices}
+                answer={this.state.answers[this.state.index]}
+                onSubmit={this.handleSubmit}
+              />
             </Col>
           </Row>
         </Container>
