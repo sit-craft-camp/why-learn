@@ -93,6 +93,10 @@ const Box = styled.div`
   animation-name: ${fadeIn};
   animation-duration: 0.8s;
   animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  @media screen and (max-width: 680px) {
+    width: 95%;
+  }
 `
 
 const Heading = styled.h1`

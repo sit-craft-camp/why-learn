@@ -48,6 +48,11 @@ export const Tagline = styled.h1`
     opacity: 1;
     animation: ${blinking} 1s linear infinite;
   }
+
+  @media screen and (max-width: 680px){
+    display: block;
+    position: static;
+  }
 `
 
 const Bold = styled.strong`
