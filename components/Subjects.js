@@ -47,6 +47,10 @@ const Card = styled.a`
   &:hover {
     transform: translateY(-1em);
   }
+
+  @media screen and (max-width: 680px) {
+    margin-bottom: 1.8em;
+  }
 `
 
 const CardTitle = styled.h2`
@@ -89,9 +93,9 @@ const Subjects = () => (
       <Heading>Choose Your Destiny. Wisely.</Heading>
       <Row>
         {subjects.map((subject, index) => (
-          <Col key={index}>
-            <Link href={`/details?id=${subject.name}`} passHref prefetch>
-              <Card>
+          <Col md={6} xs={12} key={index}>
+            <Card>
+              <Link href={`/details?id=${subject.name}`} passHref prefetch>
                 <CardImage color={subject.color}>
                   <Ink opacity={0.15} />
                   <img

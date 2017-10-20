@@ -28,6 +28,13 @@ const Tagline = styled.h1`
   font-size: 2.4em;
 
   margin-bottom: 1.3em;
+
+  @media screen and (max-width: 680px) {
+    display: block;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 0.8em;
+  }
 `
 
 const Heading = styled.h2`
@@ -67,6 +74,9 @@ const Button = styled.a`
   &:hover {
     background: ${primaryHover};
     transform: translateY(-0.3em);
+  }
+  @media screen and (max-width: 680px) {
+    bottom: 1em;s
   }
 `
 
