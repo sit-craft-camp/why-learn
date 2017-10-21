@@ -63,7 +63,7 @@ const result = () => (
       <Jobs C={SLayout} data={chosenJobs} />
       <Button onClick={() => Router.push('/game')}>
         <Ink />
-        ลองทดสอบความสามารถ
+        เลือกทำอาชีพนี้
       </Button>
     </Container>
   </Page>
