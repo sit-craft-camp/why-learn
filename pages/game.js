@@ -47,6 +47,11 @@ const Perspective = styled.div`
   perspective: 1000px;
   height: 100%;
   position: relative;
+  transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  &:hover {
+    transform: scale(1.08);
+  }
 `
 
 export const rollIn = keyframes`
@@ -65,11 +70,15 @@ const GridArea = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 20em;
   box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+  border-radius: 50%;
+  position: relative;
+  background: white;
+
+  width: 23em;
+  height: 23em;
 
   margin: 0 auto;
-  margin-left: 5em;
 
   animation-name: ${rollIn};
   animation-duration: 2s;
@@ -80,8 +89,11 @@ const GridArea = styled.div`
 const Vert = styled.div`
   display: flex;
   align-items: center;
+  position: relative;
 
   width: 100%;
+  height: 100%;
+  perspective: 600px;
 `
 
 const Area = styled.div`
@@ -89,7 +101,7 @@ const Area = styled.div`
   align-items: center;
   justify-content: center;
 
-  background: #fff;
+  background: transparent;
 
   height: 100%;
   width: 100%;
@@ -97,26 +109,65 @@ const Area = styled.div`
 
   font-size: 2em;
   color: #555;
+  position: relative;
 
   user-select: none;
 
   transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+  border-radius: 50%;
   cursor: pointer;
-  transform: rotateX(0deg);
 
   &:hover {
+    transform: translateZ(100px);
     transform-style: preserve-3d;
-
-    background: #333;
+    box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1),
+      0 5px 15px rgba(0, 0, 0, 0.07);
+    background: linear-gradient(45deg, #00ffa1, aqua);
     color: white;
+    border: 3px solid white;
   }
 `
 
 // ${'' /* transform: rotateX(180deg) translateZ(-100px); */}
 
-const GameGrid = ({areas, onClick}) => (
+const rotatingCircle = keyframes`
+  from {
+    transform: rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(360deg);
+  }
+`
+
+const AlchemistCircle = styled.div`
+  position: absolute;
+  top: -4em;
+  bottom: 0;
+  left: -4em;
+  right: 0;
+  width: 30em;
+  height: 30em;
+  z-index: 0;
+
+  opacity: 0.5;
+  pointer-events: none;
+  background-image: url('http://upload.wikimedia.org/wikipedia/commons/1/1b/Alchemic_Circle_FMA_Element.svg');
+  background-size: cover;
+
+  animation-name: ${rotatingCircle};
+  animation-duration: 5s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  transition: all 1s ease-in-out;
+
+  transform: rotateZ(${props => props.deg || 0}deg);
+`
+
+const GameGrid = ({deg, areas, onClick}) => (
   <Perspective>
     <GridArea>
+      <AlchemistCircle deg={deg} />
       {areas.map((area, y) => (
         <Vert key={y}>
           {area.map((num, x) => (
@@ -134,9 +185,16 @@ const Row = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+  }
 `
 
-const Col = styled.div`width: 100%;`
+const Col = styled.div`
+  width: 100%;
+  z-index: 1;
+`
 
 const Objective = styled.div`
   font-family: Prompt, Roboto, Helvetica Neue, sans-serif;
@@ -152,14 +210,15 @@ class Game extends Component {
     intro: false,
     ready: false,
     index: 0,
+    deg: 0,
     answers: [],
-    areas: [[2, 8, 3], [9, '+', 1], [5, 7, 6]]
+    areas: [['', 'X', ''], ['IX', 'IV', 'I'], ['', 'VII', '']]
   }
 
   async componentDidMount() {
-    // await delay(3000)
+    await delay(3000)
     this.setState({loading: false, intro: true})
-    // await delay(5000)
+    await delay(5000)
     this.setState({intro: false, ready: true})
   }
 
@@ -167,11 +226,12 @@ class Game extends Component {
     const areas = this.state.areas
     const num = areas[y][x]
 
-    if (num > 0) {
-      console.info(x, y, num)
-      areas[y][x] -= 1
+    console.info(x, y, num)
 
-      this.setState({areas})
+    if (num === 'X') {
+      this.setState({deg: this.state.deg + 20})
+    } else if (num === 'VII') {
+      this.setState({deg: this.state.deg - 20})
     }
   }
 
@@ -187,13 +247,17 @@ class Game extends Component {
               <Character src="/static/president.png" />
               <Card>
                 <Objective>
-                  ที่นาแต่ละแปลงมีคนอยู่ดังนี้ ถ้าคุณเป็นพลเอกปลายุทธ์
+                  ที่นาแต่ละแปลงมีคนอยู่ดังนี้ ถ้าคุณเป็นพลเอก ปลายุทธ์
                   จันทร์อังคาร คุณจะสั่งอพยพใครก่อน
                 </Objective>
               </Card>
             </Col>
             <Col>
-              <GameGrid areas={this.state.areas} onClick={this.handleTurn} />
+              <GameGrid
+                deg={this.state.deg}
+                areas={this.state.areas}
+                onClick={this.handleTurn}
+              />
             </Col>
           </Row>
         </Container>
