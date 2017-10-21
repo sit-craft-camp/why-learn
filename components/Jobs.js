@@ -35,9 +35,9 @@ export default class Jobs extends Component {
     if (this.props.id && this.state.index === 0) {
       return (
         <Selector
-          image={`/static/${this.subject.image}.png`}
-          name={`Why do we learn ${this.subject.name}?`}
-          desc={`${this.subject.desc} Press Right to Find Out!`}
+          image={this.props.image || `/static/${this.subject.image}.png`}
+          name={this.props.why || `Why do we learn ${this.subject.name}?`}
+          desc={this.props.desc || this.subject.desc}
           index={this.state.index}
           C={this.props.C}
           {...this.nav}

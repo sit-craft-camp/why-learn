@@ -20,6 +20,16 @@ const Heading = styled.h1`
   color: #777;
 `
 
+const Desc = styled.div`
+  margin: 0;
+  font-size: 1.1em;
+  line-height: 0.7em;
+  font-weight: 300;
+  font-family: Prompt, Roboto, Helvetica Neue, sans-serif;
+  letter-spacing: 0.07em;
+  color: #777;
+`
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -53,6 +63,13 @@ const chosenJobs = jobs.filter(
 
 console.info(chosenJobs)
 
+const desc = `คุณเป็นคนที่น่าตื่นเต้น แต่อารมณ์แปรปรวน เป็นผู้นำโดยธรรมชาติ
+  ตัดสินใจเร็วแต่มันไม่ถูกเสมอไป เขาเห็นว่าคุณเป็นกล้าหาญและ ท้าทาย
+  เป็นคนที่พร้อมที่จะทดลองอะไรก็ได้ เป็นคนที่กล้าเสี่ยงคว้าเอา โอกาส
+  และสนุกกับการผจญภัย ผู้คนมักรู้สึกสนุกที่ได้อยู่กับคุณ
+  เพราะความน่าตื่นเต้นที่คุณสื่อออกมา
+`
+
 const result = () => (
   <Page>
     <Particle {...particle} />
@@ -60,7 +77,14 @@ const result = () => (
       <Card>
         <Heading>อาชีพที่คุณอาจสนใจ</Heading>
       </Card>
-      <Jobs C={SLayout} data={chosenJobs} />
+      <Jobs
+        C={SLayout}
+        data={chosenJobs}
+        id
+        why="ผลลัพธ์จากคำถามทายนิสัย"
+        desc={desc}
+        image="/static/socialcolor.png"
+      />
       <Button onClick={() => Router.push('/game')}>
         <Ink />
         เลือกทำอาชีพนี้
