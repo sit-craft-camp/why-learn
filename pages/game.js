@@ -83,7 +83,9 @@ const GridArea = styled.div`
   animation-name: ${rollIn};
   animation-duration: 2s;
   animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
-  transform: rotateX(55deg) rotateY(0deg) rotateZ(50deg) translateZ(1px);
+  transform: rotateX(55deg) rotateY(0deg) rotateZ(${props => props.deg || 0}deg)
+    translateZ(1px);
+  transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
 `
 
 const Vert = styled.div`
@@ -166,8 +168,8 @@ const AlchemistCircle = styled.div`
 
 const GameGrid = ({deg, areas, onClick}) => (
   <Perspective>
-    <GridArea>
-      <AlchemistCircle deg={deg} />
+    <GridArea deg={deg}>
+      <AlchemistCircle />
       {areas.map((area, y) => (
         <Vert key={y}>
           {area.map((num, x) => (
@@ -216,9 +218,9 @@ class Game extends Component {
   }
 
   async componentDidMount() {
-    await delay(3000)
+    // await delay(3000)
     this.setState({loading: false, intro: true})
-    await delay(5000)
+    // await delay(5000)
     this.setState({intro: false, ready: true})
   }
 
@@ -228,10 +230,14 @@ class Game extends Component {
 
     console.info(x, y, num)
 
+    if (this.state.deg > 200) {
+      areas[y][x] = 'VI'
+    }
+
     if (num === 'X') {
-      this.setState({deg: this.state.deg + 20})
+      this.setState({deg: this.state.deg + 20, areas})
     } else if (num === 'VII') {
-      this.setState({deg: this.state.deg - 20})
+      this.setState({deg: this.state.deg - 20, areas})
     }
   }
 
