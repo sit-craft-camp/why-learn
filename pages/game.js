@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import styled, {keyframes} from 'styled-components'
 import Particle from 'react-particles-js'
+import Router from 'next/router'
 
 import App from '../components/App'
 import Question from '../components/Question'
@@ -166,7 +167,14 @@ const AlchemistCircle = styled.div`
   transform: rotateZ(${props => props.deg || 0}deg);
 `
 
-const GameGrid = ({deg, areas, onClick}) => (
+const IV = styled.span`
+  color: ${props =>
+    props.deg === props.flag
+      ? 'blue'
+      : props.deg > props.flag ? 'red' : 'green'};
+`
+
+const GameGrid = ({flag, deg, areas, onClick}) => (
   <Perspective>
     <GridArea deg={deg}>
       <AlchemistCircle />
@@ -175,6 +183,13 @@ const GameGrid = ({deg, areas, onClick}) => (
           {area.map((num, x) => (
             <Area key={x} onClick={() => onClick(x, y)}>
               {num}
+              {x === 1 &&
+                y === 1 && (
+                  <IV deg={deg} flag={flag}>
+                    <br />
+                    {deg}
+                  </IV>
+                )}
             </Area>
           ))}
         </Vert>
@@ -206,6 +221,8 @@ const Objective = styled.div`
   color: #777;
 `
 
+const flags = [...Array(361)].map((_, i) => i).filter(i => i % 20 === 0)
+
 class Game extends Component {
   state = {
     loading: true,
@@ -214,30 +231,39 @@ class Game extends Component {
     index: 0,
     deg: 0,
     answers: [],
-    areas: [['', 'X', ''], ['IX', 'IV', 'I'], ['', 'VII', '']]
+    areas: [['', 'X', ''], ['IX', 'IV', 'I'], ['', 'VII', '']],
+    flag: flags[Math.floor(Math.random() * 19)]
   }
 
   async componentDidMount() {
-    // await delay(3000)
+    await delay(3000)
     this.setState({loading: false, intro: true})
-    // await delay(5000)
+    await delay(5000)
     this.setState({intro: false, ready: true})
   }
 
   handleTurn = (x, y) => {
-    const areas = this.state.areas
+    const {areas, deg, flag} = this.state
     const num = areas[y][x]
 
     console.info(x, y, num)
 
-    if (this.state.deg > 200) {
-      areas[y][x] = 'VI'
-    }
-
     if (num === 'X') {
-      this.setState({deg: this.state.deg + 20, areas})
+      this.setState({deg: deg + 20, areas})
     } else if (num === 'VII') {
-      this.setState({deg: this.state.deg - 20, areas})
+      this.setState({deg: deg - 20, areas})
+    } else if (num === 'IX') {
+      this.setState({deg: deg + 100, areas})
+    } else if (num === 'I') {
+      this.setState({deg: deg - 100, areas})
+    } else if (num === 'IV') {
+      if (this.state.deg === flag) {
+        setTimeout(() => {
+          Router.push('/summary')
+        }, 1000)
+      } else {
+        alert('Determination.')
+      }
     }
   }
 
@@ -253,14 +279,17 @@ class Game extends Component {
               <Character src="/static/president.png" />
               <Card>
                 <Objective>
-                  ที่นาแต่ละแปลงมีคนอยู่ดังนี้ ถ้าคุณเป็นพลเอก ปลายุทธ์
-                  จันทร์อังคาร คุณจะสั่งอพยพใครก่อน
+                  เกิดเหตุมหาอัคคีครั้งใหญ่ในเมืองกรุงเทพ นายกปลาหยุด
+                  จันทร์อังคารได้ลงมาดูสถานการณ์
+                  และพบว่าหมุดคณะราษฎร์ได้หายไปพร้อมกับเพลิงไหม้
+                  แต่เขาพบวัตถุต้องสงสัยจากโลกอื่นแทน..
                 </Objective>
               </Card>
             </Col>
             <Col>
               <GameGrid
                 deg={this.state.deg}
+                flag={this.state.flag}
                 areas={this.state.areas}
                 onClick={this.handleTurn}
               />
